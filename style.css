@@ -42,6 +42,12 @@ img {
   position: absolute;
   left: 0;
   top: 0;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.visible {
+  opacity: 1;
 }
 
 .scene-img {
@@ -54,7 +60,7 @@ img {
 }
 
 .step {
-  margin-bottom: 60vh;
+  margin-bottom: 80vh;
   background: rgba(255, 255, 255, 0.8);
   padding: 0.5rem, 1rem;
   border-radius: 10px;
