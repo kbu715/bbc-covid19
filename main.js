@@ -95,5 +95,11 @@
 
     console.log(temp); //loop몇번도는지 확인하기 위한 변수
   });
+
+  //새로고침하면 맨위로 올라가게 함
+  window.addEventListener('load', () => {
+    setTimeout(() => scrollTo(0, 0), 100); //setTimeout을 해야 잘된다..
+  });
+
   activate();
 })(); //즉시 실행 함수!!!
