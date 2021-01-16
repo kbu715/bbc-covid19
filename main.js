@@ -1,4 +1,23 @@
 (() => {
+  //bird 날라가게 하는 함수
+
+  const actions = {
+    birdFlies() {
+      //객체의 메소드
+      document.querySelector(
+        '[data-index="2"] .bird'
+      ).style.transform = `translateX(${window.innerWidth}px)`;
+      //data-index="2" 인 속성을 가진 elem의 bird 클래스를 가진 자식
+    },
+    birdFlies2() {
+      //객체의 메소드
+      document.querySelector(
+        '[data-index="5"] .bird'
+      ).style.transform = `translateX(${window.innerWidth}px)`;
+      //data-index="2" 인 속성을 가진 elem의 bird 클래스를 가진 자식
+    },
+  };
+
   const stepElems = document.querySelectorAll('.step');
   const graphicElems = document.querySelectorAll('.graphic-item');
   let currentItem = graphicElems[0]; // 현재 활성화된(visible가 붙은) .graphic-item을 지정
@@ -21,8 +40,12 @@
     graphicElems[index].dataset.index = index;
   }
 
-  function activate() {
+  function activate(action) {
     currentItem.classList.add('visible');
+
+    if (action) {
+      actions[action]();
+    }
   }
   function inactivate() {
     currentItem.classList.remove('visible');
@@ -51,7 +74,7 @@
         inactivate();
 
         currentItem = graphicElems[step.dataset.index];
-        activate();
+        activate(currentItem.dataset.action);
       }
     }
 
