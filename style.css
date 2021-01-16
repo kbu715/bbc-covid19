@@ -45,6 +45,7 @@ img {
   top: 0;
   opacity: 0;
   transition: 0.5s;
+  will-change: opacity;
 }
 
 .visible {
@@ -81,4 +82,9 @@ img {
   left: 30%;
   bottom: 30%;
   transition: 1.5s 0.5s linear;
+}
+
+.global-footer {
+  padding: 2rem 0;
+  text-align: center;
 }
