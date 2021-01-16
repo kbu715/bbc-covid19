@@ -2,19 +2,31 @@
   //bird 날라가게 하는 함수
 
   const actions = {
-    birdFlies() {
+    birdFlies(key) {
       //객체의 메소드
-      document.querySelector(
-        '[data-index="2"] .bird'
-      ).style.transform = `translateX(${window.innerWidth}px)`;
-      //data-index="2" 인 속성을 가진 elem의 bird 클래스를 가진 자식
+      if (key) {
+        document.querySelector(
+          '[data-index="2"] .bird' //data-index="2" 인 속성을 가진 elem의 bird 클래스를 가진 자식
+        ).style.transform = `translateX(${window.innerWidth}px)`;
+      } else {
+        document.querySelector(
+          '[data-index="2"] .bird'
+        ).style.transform = `translateX(-100%)`;
+      }
     },
-    birdFlies2() {
+    birdFlies2(key) {
       //객체의 메소드
-      document.querySelector(
-        '[data-index="5"] .bird'
-      ).style.transform = `translateX(${window.innerWidth}px)`;
-      //data-index="2" 인 속성을 가진 elem의 bird 클래스를 가진 자식
+      if (key) {
+        document.querySelector(
+          '[data-index="5"] .bird' //data-index="2" 인 속성을 가진 elem의 bird 클래스를 가진 자식
+        ).style.transform = `translate(${window.innerWidth}px, ${
+          -window.innerHeight * 0.7
+        }px)`;
+      } else {
+        document.querySelector(
+          '[data-index="5"] .bird'
+        ).style.transform = `translateX(-100%)`;
+      }
     },
   };
 
@@ -44,11 +56,14 @@
     currentItem.classList.add('visible');
 
     if (action) {
-      actions[action]();
+      actions[action](true);
     }
   }
-  function inactivate() {
+  function inactivate(action) {
     currentItem.classList.remove('visible');
+    if (action) {
+      actions[action](false);
+    }
   }
 
   window.addEventListener('scroll', () => {
@@ -71,7 +86,7 @@
       ) {
         // console.log(step.dataset.index);
 
-        inactivate();
+        inactivate(currentItem.dataset.action);
 
         currentItem = graphicElems[step.dataset.index];
         activate(currentItem.dataset.action);

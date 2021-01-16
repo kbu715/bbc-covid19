@@ -31,6 +31,7 @@ img {
   position: sticky;
   top: 0;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .graphic-item {
@@ -73,5 +74,11 @@ img {
   bottom: 70%;
   left: 0;
   transform: translateX(-100%);
+  transition: 1.5s 0.5s linear;
+}
+
+[data-index='5'] .bird {
+  left: 30%;
+  bottom: 30%;
   transition: 1.5s 0.5s linear;
 }
